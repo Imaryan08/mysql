@@ -10,3 +10,36 @@
 
 ## exit from mysql terminal
  - exit
+
+## error while connecting mysql with nodeJS 
+ - error: Error: ER_NOT_SUPPORTED_AUTH_MODE: Client does
+ not support authentication protocol requested
+ by server; consider upgrading MySQL client
+
+ - Solution : 
+   - ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+   ```bash
+   - Execute the following query in MYSQL Workbench
+
+	ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+
+	Where root as your user localhost as your URL and password as your password
+
+	Then run this query to refresh privileges:
+
+	flush privileges;
+	```
+
+  ## another way
+  1. Open MySQL Workbench and connect to your MySQL server.
+  2. In the SQL Editor window, paste the following query:
+
+  ```bash
+  ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+
+```
+
+- After executing the query, you can run the following command to refresh the privileges:
+```bash
+	FLUSH PRIVILEGES;
+```
